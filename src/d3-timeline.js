@@ -145,7 +145,7 @@
 
     var appendLabel = function (gParent, yAxisMapping, index, hasLabel, datum) {
       var fullItemHeight    = itemHeight + itemMargin;
-      var rowsDown          = fullItemHeight + fullItemHeight * (yAxisMapping[index] || 1);
+      var rowsDown          = fullItemHeight * (yAxisMapping[index] || 1) + (fullItemHeight/2);
 
       gParent.append("text")
         .attr("class", "timeline-label")
@@ -348,7 +348,7 @@
       });
 
       var belowLastItem = (margin.top + (itemHeight + itemMargin) * maxStack);
-      var aboveFirstItem = margin.top;
+      var aboveFirstItem = margin.top + 20;
       var timeAxisYPosition = showAxisTop ? aboveFirstItem : belowLastItem;
       if (showTimeAxis) { appendTimeAxis(g, xAxis, timeAxisYPosition); }
       if (timeAxisTick) { appendTimeAxisTick(g, xAxis, maxStack); }
