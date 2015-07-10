@@ -36,6 +36,7 @@
         navMargin = 60,
         showTimeAxis = true,
         showAxisTop = false,
+        today = new Date(),
         showTodayLine = false,
         timeAxisTick = false,
         timeAxisTickFormat = {stroke: "stroke-dasharray", spacing: "4 10"},
@@ -393,7 +394,7 @@
       }
 
       if (showTodayLine) {
-        var todayLine = xScale(new Date());
+        var todayLine = xScale(today);
         appendLine(todayLine, showTodayFormat);
       }
 
@@ -600,6 +601,11 @@
 
     timeline.showToday = function () {
       showTodayLine = !showTodayLine;
+      return timeline;
+    };
+
+    timeline.setToday = function(date) {
+      today = date;
       return timeline;
     };
 
